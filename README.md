@@ -1,50 +1,154 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+# **Navigation App Prototype**
 
-1. Install dependencies
+A prototype of a navigation-based app featuring **menus, tabs, stacks, and product details**. Built with **React**, **TypeScript**, **Expo Go**, **Tailwind CSS**, and tested with **Android Studio**.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## **Features**
 
-   ```bash
-    npx expo start
-   ```
+* **Menu Navigation:**
 
-In the output, you'll find options to open the app in a
+  * **Tabs + Stack Navigation** with:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    * **Products:** List of articles and their prices
+    * **User:** User profile or account information
+    * **Settings:** App settings
+    * **Open Menu:** Access to additional options
+  * **Schedule:** View user schedules or timelines
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+* **Products Module:**
 
-## Get a fresh project
+  * Displays articles with their **title, description, and price**
+  * Interactive design using **React Native FlatList**
 
-When you're ready, run:
+* **Cross-Platform Support:**
+
+  * Fully tested on Android (via **Android Studio Emulator**) and iOS (Expo Go app)
+  * Responsive layout using **Tailwind CSS**
+
+---
+
+## **Tech Stack**
+
+* **React (TypeScript)** – modular components and strong typing
+* **Expo Go** – easy development & testing
+* **React Navigation** – tabs and stack navigation
+* **Tailwind CSS (via NativeWind)** – responsive and utility-first styling
+* **Android Studio** – Android emulator for testing
+
+---
+
+## **Installation**
+
+### **1. Clone the repository**
 
 ```bash
-npm run reset-project
+git clone https://github.com/<your-username>/navigation-app.git
+cd navigation-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### **2. Install dependencies**
 
-## Learn more
+```bash
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### **3. Start the development server**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npx expo start
+```
 
-## Join the community
+### **4. Run the app**
 
-Join our community of developers creating universal apps.
+* **On a physical device:** Scan the QR code using the **Expo Go** app.
+* **On Android emulator:**
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+  ```bash
+  npx expo run:android
+  ```
+* **On iOS simulator (Mac):**
+
+  ```bash
+  npx expo run:ios
+  ```
+
+---
+
+## **Project Structure**
+
+```
+navigation-app/
+├── app/                      # App routing (expo-router)
+│   ├── (tabs)/               # Tab navigation
+│   │   ├── products.tsx      # Products screen with articles & prices
+│   │   ├── user.tsx          # User screen
+│   │   ├── settings.tsx      # Settings screen
+│   │   └── menu.tsx          # Open menu screen
+│   ├── schedule.tsx          # Schedule screen
+│   ├── _layout.tsx           # Stack layout for nested navigation
+├── components/               # Reusable UI components
+├── store/                    # State management
+├── assets/                   # Fonts, icons, and images
+├── tailwind.config.js        # Tailwind CSS configuration
+├── App.tsx                   # Entry point
+└── README.md
+```
+
+---
+
+## **Example Product Item**
+
+```tsx
+import React from 'react';
+import { View, Text } from 'react-native';
+
+type Product = { id: string; name: string; price: number };
+
+export const ProductItem = ({ product }: { product: Product }) => (
+  <View className="flex-row justify-between p-4 bg-gray-100 rounded-md mb-2">
+    <Text className="text-lg font-bold">{product.name}</Text>
+    <Text className="text-lg">${product.price.toFixed(2)}</Text>
+  </View>
+);
+```
+
+---
+
+## **Styling with Tailwind CSS**
+
+This app uses **NativeWind (Tailwind for React Native)** for styling:
+
+```bash
+npm install nativewind tailwindcss
+npx tailwindcss init
+```
+
+Example:
+
+```tsx
+<View className="bg-white flex-1 p-4">
+  <Text className="text-xl font-semibold">Welcome!</Text>
+</View>
+```
+
+---
+
+## **Future Improvements**
+
+* Add backend support for product management
+* Implement user authentication
+* Persist user settings & schedule
+* Add animations for menu transitions
+
+---
+
+## **License**
+
+This project is licensed under the MIT License.
+
+---
+
+Do you want me to **add navigation diagrams (images) to this README** so the user can visualize the tab + stack structure? Or should I include a **full working `_layout.tsx` with tabs + stack** in TypeScript?
